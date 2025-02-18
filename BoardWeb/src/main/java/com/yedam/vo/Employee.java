@@ -1,4 +1,4 @@
-package com.yedam;
+package com.yedam.vo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,23 +12,13 @@ import java.util.Date;
  */
 public class Employee {
 
-	private int num;  //사원번호
-	private String name; //이름
-    private String tel; //전화번호
-    private Date date;  //
-    private int money;
-    
+	private int num;  //emp_no 칼럼 
+	private String name; //emp_name 
+    private String tel; //tel_no 
+    private Date date;  //hire_date
+    private int money;//salary 
     
     public Employee() {
-//    	
-//    	this.num = 0;
-//		this.name = "기본이름";
-//		this.tel = "1111";
-//		this.date=new Date(); //날짜 설정안했을경우 오늘날짜로 지정 
-//		this.money=250;
-//    	
-//    	
-    	
     } //기본생성자    
    
 	public Employee(int num, String name, String tel) {
