@@ -3,6 +3,12 @@ package com.yedam.vo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 //참고 employee
 /*
  * 사원번호(1001,1002)
@@ -10,6 +16,11 @@ import java.util.Date;
  * 전화번호(654-1123,654-3434)
  * 입사일자(2020-02-04)
  */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
 	private int num;  //emp_no 칼럼 
@@ -18,8 +29,7 @@ public class Employee {
     private Date date;  //hire_date
     private int money;//salary 
     
-    public Employee() {
-    } //기본생성자    
+   
    
 	public Employee(int num, String name, String tel) {
 		super();
@@ -53,37 +63,7 @@ public class Employee {
 	}
 	
 	
-	//getter setter 
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public int getMoney() {
-		return money;
-	}
-	public void setMoney(int money) {
-		this.money = money;
-	} 
+	
     
     
     

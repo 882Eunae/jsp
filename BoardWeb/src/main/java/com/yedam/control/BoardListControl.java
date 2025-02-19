@@ -28,7 +28,7 @@ public class BoardListControl implements Control {
 		req.setAttribute("list", list);
 
 		// 요청재지정(url:boardList.do (boardList.jsp))
-		req.getRequestDispatcher("boardList.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/boardList.jsp").forward(req, resp);
 
 	}
 
