@@ -82,16 +82,11 @@ public List<BoardVO> selectBoard(){
 			bd.setWriteDate(rs.getDate("write_date"));
 			bd.setWriter(rs.getString("writer"));
 			
-			
 			boardList.add(bd); 
 		}
-		
-		
-		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	
 	return boardList; 
 }
 	
