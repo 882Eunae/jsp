@@ -12,6 +12,28 @@ import com.yedam.vo.BoardVO;
  */
 public class BoardDAO extends DAO {
 	
+	//페이징의 처리를 위한 실체데이터 
+	public int getTotalCount() {
+		String sql="select count(1) from tbl_board";
+		try {
+			psmt=getConnect().prepareStatement(sql);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+		return  rs.getInt(1); //count(1) 값. 
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			disConnect();
+		}
+		
+		return 0; //조회된 정보 없음 
+	}
+	
+	
+	
 	//글조회수 증가 
 	public void updateCount(int boardNo) {
 		String sql="update tbl_board"
@@ -24,6 +46,8 @@ public class BoardDAO extends DAO {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
 		}
 		
 		
@@ -59,19 +83,34 @@ public class BoardDAO extends DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
 		}
+		
+		
+		
 		return null; //조회결과 없음 
 	}//end of getBoard 
 	
-//조회 
-public List<BoardVO> selectBoard(){
+//조회 ()
+public List<BoardVO> selectBoard(int page){
 	List<BoardVO> boardList=new ArrayList<>();
-	String qry="select * from tbl_board "+
-	"order by board_no"; 
+	String qry="select tbl_b.* "
+			+ "from(select rownum rn, tbl_a.* "
+			+ "    from (select board_no, title, content, writer, write_date, view_cnt  "
+			+ "          from tbl_board "
+			+ "          order by board_no desc) tbl_a) tbl_b "
+			+ "where tbl_b.rn >= (? -1) *5 +1 "
+			+ "and   tbl_b.rn <= ? *5";
+			 
 	
 	try {
 		
 		psmt=getConnect().prepareStatement(qry);
+		psmt.setInt(1, page);
+		psmt.setInt(2, page);
+		
+		
 		rs=psmt.executeQuery(); 
 		while(rs.next()) {
 			BoardVO bd=new BoardVO();
@@ -86,7 +125,10 @@ public List<BoardVO> selectBoard(){
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();
+	}finally {
+		disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
 	}
+	
 	return boardList; 
 }
 	
@@ -108,7 +150,10 @@ public boolean insertBoard(BoardVO board) {
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	} 
+	} finally {
+		disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
+	}
+	
 	return false; //비정상 처리 
 }
 
@@ -134,16 +179,30 @@ public boolean insertBoard(BoardVO board) {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
 		}
+		
 		return false; 
 	}
 	
 	//삭제 
 	public boolean deleteBoard(int boardNo) {
-		
+		String query="delete from tbl_board where board_no =?";
+		try {
+			psmt=getConnect().prepareStatement(query);
+			psmt.setInt(1, boardNo);
+			int r=psmt.executeUpdate(); 
+			if(r>0) {
+				return true; 
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disConnect(); //정상실행이거나 예외발생이나 반드시 실행할 코드. 
+		}
 		
 		return false; 
 	}
-	
 	
 }

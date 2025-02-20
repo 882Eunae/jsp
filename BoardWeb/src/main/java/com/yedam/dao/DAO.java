@@ -17,7 +17,33 @@ public class DAO {
 	PreparedStatement psmt; //조금 더 편함 
 	ResultSet rs;  
 	
-	//Connection 객체 
+	//세션해제. 
+	void disConnect() {
+		try {
+		if(conn !=null) {
+				conn.close();
+			} 
+		
+		if(rs !=null) {
+			rs.close();
+		}
+		if(psmt !=null) {
+			psmt.close();
+		} 
+		
+		if(stmt !=null) {
+			stmt.close();
+		} 
+		
+		
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	//오라클 접속 세션 연결 
 	Connection getConnect() throws SQLException {
 		String url="jdbc:oracle:thin:@localhost:1521:xe"; //오라클 디비 접속정보.
 		String user="hr"; 

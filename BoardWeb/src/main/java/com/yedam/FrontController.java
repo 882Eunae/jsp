@@ -15,10 +15,13 @@ import com.yedam.control.AddFormControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.Control;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
-import com.yedam.control.ModiFormControl;
+
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.ModifyControl;
+import com.yedam.control.RemoveBoardControl;
 
 /*
  * MVC에서 control 역할 
@@ -34,14 +37,20 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		map.put("/main.do", new MainControl()); 
+		map.put("/main.do", new MainControl());
 		map.put("/boardList.do", new BoardListControl());
-		map.put("/addBoard.do", new AddBoardControl()); //등록처리 
-		map.put("/addForm.do", new AddFormControl()); //등록화면...
-		map.put("/board.do",new BoardControl()); 
-		map.put("/modifyForm.do", new ModifyControl()); //수정화면 
-		map.put("/modifyBoard.do", new ModifyBoardControl()); 
-		
+		map.put("/addBoard.do", new AddBoardControl()); // 등록처리
+		map.put("/addForm.do", new AddFormControl()); // 등록화면...
+		map.put("/board.do", new BoardControl());
+		map.put("/modifyForm.do", new ModifyControl()); // 수정화면 화면만
+		map.put("/modifyBoard.do", new ModifyBoardControl());
+		// 삭제화면,삭제처리
+		map.put("/removeBoard.do", new RemoveBoardControl());
+
+		map.put("/loginForm.do", new LoginControl()); // 로그인 화면
+		map.put("/login.do", new LoginControl()); // 로그인처리
+		map.put("/logout.do", new LogoutControl()); // 로그인처리
+
 	}
 
 	@Override

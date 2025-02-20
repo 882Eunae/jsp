@@ -7,20 +7,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.dao.BoardDAO;
-import com.yedam.vo.BoardVO;
 
-public class BoardControl implements Control {
+public class RemoveBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
+		// ?bno=22 삭제할 파라미터를 받아옴 
 		String bno=req.getParameter("bno"); 
+		
 		BoardDAO bdao=new BoardDAO(); 
-		BoardVO board=bdao.getBoard(Integer.parseInt(bno)); //문자열 "14" - > int 14 변경 
-		bdao.updateCount(Integer.parseInt(bno)); //조회수 증가. 
-		//상세화면  요청정보의 attribute 활용 
-		req.setAttribute("board", board); // 
-		req.getRequestDispatcher("/WEB-INF/views/board.jsp").forward(req, resp); 
+		if(bdao.deleteBoard(Integer.parseInt(bno))) {
+			//삭제가 잘되면 목록으로 이동 
+			resp.sendRedirect("boardList.do");
+			
+		}else {
+			System.out.println("처리실패");
+		}
+		
 		
 	}
 
