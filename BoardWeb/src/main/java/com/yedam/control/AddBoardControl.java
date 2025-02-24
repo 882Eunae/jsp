@@ -30,7 +30,6 @@ public class AddBoardControl implements Control {
 //		String writer=req.getParameter("writer"); 
 
 		// 매개값으로 활용
-
 		String title = mr.getParameter("title");
 		String content = mr.getParameter("content");
 		String writer = mr.getParameter("writer");

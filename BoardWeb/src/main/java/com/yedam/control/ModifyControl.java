@@ -34,7 +34,7 @@ public class ModifyControl implements Control {
 		}
 		
 		req.setAttribute("board", board);
-		req.getRequestDispatcher("/WEB-INF/views/modifyBoard.jsp").forward(req, resp); 
+		req.getRequestDispatcher("board/modifyBoard.tiles").forward(req, resp); 
 		
 		
 		

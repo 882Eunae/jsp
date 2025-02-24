@@ -5,7 +5,6 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
     
     
-<jsp:include page="includes/header.jsp"></jsp:include>
 
 
 
@@ -86,4 +85,3 @@ let logid="${loginId}";
  });
 </script>
 
-<jsp:include page="includes/footer.jsp"></jsp:include>
