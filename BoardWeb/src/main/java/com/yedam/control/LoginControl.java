@@ -25,7 +25,6 @@ public class LoginControl implements Control {
 			String pw = req.getParameter("psw");
 			// 로그인체크
 			MemberDAO mdao = new MemberDAO();
-			
 			MemberVO mvo = mdao.login(id, pw);
 
 			if (mvo != null) {

@@ -1,42 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSTL 연습. </title>
+<title>JSTL 연습.</title>
 </head>
 <body>
-<h3>안녕하세요</h3>
- 
-<c:set var="msg" value="Hello"></c:set>
-<p> msg의 값은<c:out value="${msg }"></c:out></p>
+	<h3>안녕하세요</h3>
+
+	<c:set var="msg" value="Hello"></c:set>
+	<p>
+		msg의 값은
+		<c:out value="${msg }"></c:out>
+	</p>
 
 
-<h2>조건문</h2>
-<c set var="myAge" value="26"/>
-<c:if test="${myAge >=20 }">
-<p>당신은 성인입니다</p>
-</c:if>
+	<h2>조건문</h2>
+	<c set var="myAge" value="26" />
+	<c:if test="${myAge >=20 }">
+		<p>당신은 성인입니다</p>
+	</c:if>
 
-<c:choose>
- <c:when test="${myAge >=20 }">
- 
- <p>당신은 성인입니다</p>
- </c:when>
- <c:otherwise>
- 
- <p>당신은 미성년자 입니다</p>
- </c:otherwise>
+	<c:choose>
+		<c:when test="${myAge >=20 }">
 
-</c:choose>
+			<p>당신은 성인입니다</p>
+		</c:when>
+		<c:otherwise>
 
-<c:forEach var="i" begin="1" end="10" step="2">
+			<p>당신은 미성년자 입니다</p>
+		</c:otherwise>
 
-<p>i의 값은 ${i *2 } </p>
+	</c:choose>
 
-</c:forEach>
+	<c:forEach var="i" begin="1" end="10" step="2">
+
+		<p>i의 값은 ${i *2 }</p>
+
+	</c:forEach>
 
 
 </body>

@@ -36,10 +36,7 @@ public class DataControl implements Control {
 		}
 		
 		json+="]";
-		
 		resp.getWriter().print(json); 
-		
-		
 		
 	}
 	

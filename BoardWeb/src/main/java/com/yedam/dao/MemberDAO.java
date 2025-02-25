@@ -13,17 +13,15 @@ public class MemberDAO extends DAO {
 
 	public List<MemberVO> members() {
 		String sql = "select member_id" //
-				+ "       ,passwd" //
-				+ "        ,member_name"//
-				+ "        ,responsibility"//
+				+ "       ,passwd " //
+				+ "        ,member_name "//
+				+ "        ,responsibility "//
 				+ "  from tbl_member "; //
 		List<MemberVO> list = new ArrayList<>();
 
 		try {// 조회
 			psmt = getConnect().prepareStatement(sql);
-
-			// 쿼리실행
-			rs = psmt.executeQuery();
+			rs = psmt.executeQuery();// 쿼리실행
 
 			while (rs.next()) { // 조회된 결과가 있으면
 				MemberVO mvo = new MemberVO();
@@ -39,7 +37,7 @@ public class MemberDAO extends DAO {
 		} finally {
 			disConnect();
 		}
-		return list; // 조회결과 없음
+		return list; 
 	}
 
 	public MemberVO login(String id, String pw) {
@@ -76,5 +74,23 @@ public class MemberDAO extends DAO {
 
 		return null; // 조회결과 없음
 	}
-
+	
+	public boolean deleteMember(String memberId) {
+		
+		String query="delete from tbl_member where member_id = ?";
+		
+		try {
+			psmt=getConnect().prepareStatement(query);
+			psmt.setString(1, memberId);
+			int r=psmt.executeUpdate(); 
+			if(r>0) {
+				return true; 
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disConnect();
+		}
+		return false;
+	}
 }

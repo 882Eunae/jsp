@@ -181,6 +181,7 @@ public boolean insertBoard(BoardVO board) {
 		psmt.setString(4, board.getImg());
 		
 		int r=psmt.executeUpdate(); //insetr 
+		 
 		if(r==1) {
 			return true; //정상등록. 
 		}

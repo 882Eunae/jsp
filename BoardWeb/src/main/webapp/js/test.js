@@ -16,7 +16,7 @@ document.querySelector('input[name="age"]').value = obj.age;
 fetch('testData.do')
 	.then(function(result) {
 		console.log(result); //body:steream
-		return result.json();
+		return result.json(); //객체로바뀜 
 	})
 	.then(function(result) {
 		console.log(result); 	 //자바스크립트 객체 

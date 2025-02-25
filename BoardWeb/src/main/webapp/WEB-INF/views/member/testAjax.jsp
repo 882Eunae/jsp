@@ -15,10 +15,7 @@
 </thead>
 <tbody id="list">
 <tr><td>user01</td><td>1111</td><td>홍길동</td><td>User</td></tr>
-
-
 </tbody>
-
 </table>
 
 
