@@ -14,10 +14,8 @@ public class RemoveMemberControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		String id=req.getParameter("mid"); 
-		
 		MemberDAO mdao=new MemberDAO(); 
-		
-		
+
 		//MemberDAO에 삭제 boolean 
 		boolean isOk=mdao.deleteMember(id); 
 		
