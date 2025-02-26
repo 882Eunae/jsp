@@ -75,10 +75,6 @@ public class MemberDAO extends DAO {
 		return null; // 조회결과 없음
 	}
 
-	
-	
-
-
 	public boolean deleteMember(String id) {
 		String query = "delete from tbl_member where member_id = ?";
 

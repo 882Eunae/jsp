@@ -4,9 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 ${"Expression Language" }
-<p>BoardVO의 객체의 값=>${board }</p>
-<p>Stirng 객체의 값=>${msg }</p>
-<p>String 객체의 값=>${loginId }</p>
+
 <h3>상세화면(board.jsp])</h3>
 <form action="modifyForm.do">
 	<input type="hidden" name="bno" value="${board.boardNo }">
@@ -73,13 +71,28 @@ ${"Expression Language" }
 				 <span class="col-sm-5">글내용</span>
 				 <span class="col-sm-2">작성자</span> 
 				 <span class="col-sm-2">삭제</span>
-				     </li>
+			 </li>	    
 		</ul>
 	</div>
 
 	<!-- 댓글페이지 -->
-
-
+ <div class="footer">
+ <nav aria-label="Page navigation example">
+  <ul class="pagination pagination-sm justify-content-center">
+  
+   <!-- 페이지 --> 
+   
+    
+    <li class="page-item">
+    
+    </li>
+   
+  </ul>
+ 
+  
+</nav>
+ </div>
+ 
 </div>
 
 <script>

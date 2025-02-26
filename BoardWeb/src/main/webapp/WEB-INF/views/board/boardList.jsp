@@ -37,11 +37,7 @@ ${paging }
 		<th>작성일자</th>
 		<th>내용</th>
 		<th>조회수</th>
-
-
 	</thead>
-
-
 	<tbody>
 		<c:forEach var="board" items="${list }">
 			<tr>

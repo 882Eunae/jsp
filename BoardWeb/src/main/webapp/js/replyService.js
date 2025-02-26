@@ -10,8 +10,8 @@ const svc = {
 		return this.name;
 	},
 	//목록메서드
-	replyList: function(bno, successCallback, errorCallback) {
-			 fetch('replyList.do?bno=' + bno) //목록 데이터를 가져옴 
+	replyList: function(param={bno,page}, successCallback, errorCallback) {
+			 fetch('replyList.do?bno=' +param.bno+'&page='+param.page) //목록 데이터를 가져옴 
 			.then(result=> result.json()) //화살표함수
 			.then(successCallback) //정상처리시 실행함수 
 			.catch(errorCallback) //에러시 실행할 함수 
@@ -32,5 +32,12 @@ const svc = {
 					.then(successCallback) //정상처리시 실행함수 
 					.catch(errorCallback) //에러시 실행할 함수 			
 
+	},
+	//페이지 계산하기 
+	makePaging(bno=1,successCallback, errorCallback){
+		fetch('getReplyCnt.do?bno=' + bno) //목록 데이터를 가져옴 
+							.then(result=> result.json()) //화살표함수
+							.then(successCallback) //정상처리시 실행함수 
+							.catch(errorCallback) //에러시 실행할 함수 			
 	}
 }

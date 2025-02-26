@@ -30,7 +30,7 @@ fetch("testData.do")
 	.then(function(result) {
 		const memberAry = result;
 		memberAry.forEach(function(member) {
-			const target = document.querySelector('#list');
+			const target = document.querySelector('table.table #list_member');
 			const html = `<tr id=tr_${member.memberId}>
 		              <td>${member.memberId}</td>
 					  <td>${member.passwd}</td>

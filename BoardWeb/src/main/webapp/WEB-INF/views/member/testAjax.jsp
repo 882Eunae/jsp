@@ -3,41 +3,29 @@
 <h3>Ajax연습페이지</h3>
 
 
-<table class="table">
 
-<thead>
-<tr><th>아이디</th>
-<th>비번</th>
-<th>이름</th>
-<th>권한</th>
-</tr>
-</thead>
-<tbody id="list">
-<tr><td>user01</td><td>1111</td><td>홍길동</td><td>User</td></tr>
-</tbody>
+<form action="addData.do" method="post" enctype="multipart/form-data">
+	<table class="table">
+		<tr>
+			<th>회원ID</th>
+			<td><input type="text" name="mid"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td><input type="text" name="mpw"></td>
+		</tr>
+		<tr>
+			<th>회원이름</th>
+			<td><input type="text" name="mname"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button id="addMember" class="btn btn-danger">추가</button>
+			</td>
+		</tr>
+	</table>
+</form>
 
-	<tr>
-		<th>회원ID</th>
-		<td><input type="text" name="mid"></td>
-	</tr>
-	<tr>
-		<th>비밀번호</th>
-		<td><input type="text" name="mpw"></td>
-	</tr>
-	<tr>
-		<th>회원이름</th>
-		<td><input type="text" name="mname"></td>
-	</tr>
-	<tr>
-		
-		<td colspan="2" align="center">
-		<button id="addMember" class="btn btn-danger">추가</button>
-		</td>
-	</tr>
-	
-
-
-</table>
 <h3>회원목록</h3>
 <table class="table">
 	<thead>
@@ -48,8 +36,10 @@
 			<th>권한</th>
 		</tr>
 	</thead>
-	<tbody id="list">
+	<tbody id="list_member">
 
 	</tbody>
 </table>
+
+
 <script src="js/member.js"></script>
