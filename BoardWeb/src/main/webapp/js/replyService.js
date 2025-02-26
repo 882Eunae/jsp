@@ -2,8 +2,6 @@
  * replyService.js  
  */
 
-
-
 const svc = {
 	name: "Hong",
 	showName: function() {

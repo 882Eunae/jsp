@@ -66,37 +66,31 @@ ${"Expression Language" }
 	<!-- 댓글목록 -->
 	<div class="content">
 		<ul>
-			<li>
-				<span class="col-sm-2">글번호</span>
-				 <span class="col-sm-5">글내용</span>
-				 <span class="col-sm-2">작성자</span> 
-				 <span class="col-sm-2">삭제</span>
-			 </li>	    
+			<li><span class="col-sm-2">글번호</span> <span class="col-sm-5">글내용</span>
+				<span class="col-sm-2">작성자</span> <span class="col-sm-2">삭제</span></li>
 		</ul>
 	</div>
 
 	<!-- 댓글페이지 -->
- <div class="footer">
- <nav aria-label="Page navigation example">
-  <ul class="pagination pagination-sm justify-content-center">
-  
-   <!-- 페이지 --> 
-   
-    
-    <li class="page-item">
-    
-    </li>
-   
-  </ul>
- 
-  
-</nav>
- </div>
- 
+	<div class="footer">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination pagination-sm justify-content-center">
+
+				<!-- 페이지 -->
+
+
+				<li class="page-item"></li>
+
+			</ul>
+
+
+		</nav>
+	</div>
+
 </div>
 
 <script>
-	let logid = "${loginId}"; 
+	let logid = "${loginId}";
 	const bno = "${board.boardNo }";
 	console.log(bno);
 	//삭제버튼에 클릭 이벤트 등록.

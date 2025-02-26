@@ -21,6 +21,8 @@ public class AddDataControl implements Control {
 		String id=req.getParameter("mid");
 		String pw=req.getParameter("mpw");
 		String name=req.getParameter("mname");
+		
+		System.out.println("ajax 잘넘어갔는지확인"+id+pw+name); //testAjax 파일에서 파라미터를 받아오지 못함 
 
 		//dao 
 		MemberDAO mdao=new MemberDAO(); 
@@ -30,7 +32,7 @@ public class AddDataControl implements Control {
 		mvo.setPasswd(pw);
 		mvo.setMemberName(name);
 		//등록하기
-	boolean run=mdao.insertMember(mvo); 
+		boolean run=mdao.insertMember(mvo); 
 		
 	Map<String,Object> result=new HashMap<>(); 
 		if(run) {

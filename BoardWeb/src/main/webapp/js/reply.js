@@ -10,7 +10,8 @@ function makeReply(reply = {}) {
 						<span class="col-sm-2">${reply.replyNo}</span>
 						<span class="col-sm-5">${reply.reply}</span>
 						<span class="col-sm-2">${reply.replyer}</span>
-						<span class="col-sm-2"><button onclick="deleteRow('${reply.replyNo}')">삭제</button></span>
+					
+							<span class="col-sm-2"><button onclick="deleteRow('${reply.replyNo}')">삭제</button></span>
 						  </li>`;
 	return html;
 }
@@ -98,7 +99,7 @@ function showPagingList() {
 				}
 				target.insertAdjacentHTML('beforeend', html);
 			}	//event 
-
+			
 			if (next) {
 				html = `<li class="page-item ">
 						               <a class="page-link" href="# " data-page="${endPage + 1}" >Next</a>
@@ -109,9 +110,7 @@ function showPagingList() {
 						  </li>`;
 			}
 			target.insertAdjacentHTML('beforeend', html);
-
 			addLinkEvent(); //화면의 a태그에 이벤트 등록 
-
 		},
 		function(err) {
 			console.log(err);
@@ -128,7 +127,7 @@ document.querySelector('#addReply').addEventListener('click', function() {
 		return;
 	}
 	const parm = { bno, reply, replyer }
-	svc.addReply(parm
+		svc.addReply(parm
 		, function(result) {
 			if (result.retCode == 'OK') {
 				const html = makeReply(result.retVal);

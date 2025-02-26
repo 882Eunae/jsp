@@ -4,19 +4,19 @@
 
 
 
-<form action="addData.do" method="post" enctype="multipart/form-data">
+<form action="addData.do">
 	<table class="table">
 		<tr>
 			<th>회원ID</th>
-			<td><input type="text" name="mid"></td>
+			<td><input type="text" name="mid" id="mid"></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="text" name="mpw"></td>
+			<td><input type="text" name="mpw" id="mpw"></td>
 		</tr>
 		<tr>
 			<th>회원이름</th>
-			<td><input type="text" name="mname"></td>
+			<td><input type="text" name="mname"id="mname"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
