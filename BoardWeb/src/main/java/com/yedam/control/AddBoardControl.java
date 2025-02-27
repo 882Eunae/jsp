@@ -6,9 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.yedam.common.DataSource;
 import com.yedam.dao.BoardDAO;
+import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
 
 public class AddBoardControl implements Control {
@@ -41,10 +45,15 @@ public class AddBoardControl implements Control {
 		bvo.setContent(content);
 		bvo.setWriter(writer);
 		bvo.setImg(img); //추가한 img칼럼. 
-		BoardDAO bdao = new BoardDAO();
-		if (bdao.insertBoard(bvo)) {
+//		BoardDAO bdao = new BoardDAO();
+		
+		SqlSession sqlSession=DataSource.getInstance().openSession(); 
+		BoardMapper mapper=sqlSession.getMapper(BoardMapper.class); 
+		
+		if (mapper.insertBoard(bvo) == 1) {
+			sqlSession.commit(true); 
 			resp.sendRedirect("boardList.do");
-			System.out.println(img);
+			
 		} else {
 			System.out.println("실패.");
 		}

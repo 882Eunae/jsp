@@ -12,7 +12,6 @@ public class RemoveMemberControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		String id=req.getParameter("mid"); 
 		MemberDAO mdao=new MemberDAO(); 
 

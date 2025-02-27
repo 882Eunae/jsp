@@ -75,15 +75,8 @@ ${"Expression Language" }
 	<div class="footer">
 		<nav aria-label="Page navigation example">
 			<ul class="pagination pagination-sm justify-content-center">
-
 				<!-- 페이지 -->
-
-
-				<li class="page-item"></li>
-
 			</ul>
-
-
 		</nav>
 	</div>
 

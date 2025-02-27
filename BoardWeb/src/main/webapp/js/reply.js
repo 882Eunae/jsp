@@ -15,6 +15,7 @@ function makeReply(reply = {}) {
 						  </li>`;
 	return html;
 }
+
 //댓글삭제 
 function deleteRow(rno) {
 	if (!confirm("삭제하시겠습니까?")) {
@@ -31,6 +32,7 @@ function deleteRow(rno) {
 			console.log(err);
 		})
 }
+
 //댓글목룍 출력함수 
 function showPageList() {
 	svc.replyList({ bno, page },
@@ -51,10 +53,11 @@ function showPageList() {
 		}
 	);
 }//end of showPageList
+
 //목록.  
 showPageList();
 showPagingList();
-let currPage; 
+
 //페이지 생성 
 function showPagingList() {
 	svc.makePaging(bno,
@@ -63,7 +66,7 @@ function showPagingList() {
 			const totalCnt = result.totalCnt;
 			// startPage, endPage ,currentPage
 			//prev,next 계산  1.. 5  ...10    
-			 currPage = page;
+			let currPage = page;
 			let endPage = Math.ceil(currPage / 10) * 10;
 			let startPage = endPage - 9; //endPage가 10이면 start 가 1이다  
 			let realEnd = Math.ceil(totalCnt / 5);
@@ -79,7 +82,7 @@ function showPagingList() {
 			//링크생성 
 			if (prev) {
 				html = `<li class="page-item ">
-			               <a class="page-link">Previous</a>
+			               <a class="page-link" data-page="${startPage - 1}">Previous</a>
 			            </li>`;
 			} else {
 				html = `<li class="page-item disabled">
@@ -89,25 +92,24 @@ function showPagingList() {
 			target.insertAdjacentHTML('beforeend', html);
 
 			for (let p = startPage; p <= endPage; p++) {
+				let html = ` <li class="page-item"><a class="page-link" href="#" data-page="${p}">${p}</a></li>`;
 				if (currPage == p) {
-					let html = `<li class="page-item active" aria-current="page">
+					html = `<li class="page-item active" aria-current="page">
 					                 <span class="page-link">${currPage}</span>
 					             </li>`;
-				}
-				else {
-					html = ` <li class="page-item"><a class="page-link" href="#" data-page="${p}">${p}</a></li>`;
-				}
+
+				}	//event 
 				target.insertAdjacentHTML('beforeend', html);
-			}	//event 
-			
+			}
+
 			if (next) {
 				html = `<li class="page-item ">
-						               <a class="page-link" href="# " data-page="${endPage + 1}" >Next</a>
-						            </li>`;
+						    <a class="page-link" href="# " data-page="${endPage + 1}" >Next</a>
+						</li>`;
 			} else {
 				html = `<li class="page-item disabled">
 						    <a class="page-link">Next</a>
-						  </li>`;
+						</li>`;
 			}
 			target.insertAdjacentHTML('beforeend', html);
 			addLinkEvent(); //화면의 a태그에 이벤트 등록 
@@ -117,6 +119,7 @@ function showPagingList() {
 		}
 	);
 }//end of showPageList(). 
+
 //댓글등록 이벤트  id=addReply
 document.querySelector('#addReply').addEventListener('click', function() {
 	//글번호:bno,작성자  작성자:logid,댓글 ? 
@@ -127,17 +130,17 @@ document.querySelector('#addReply').addEventListener('click', function() {
 		return;
 	}
 	const parm = { bno, reply, replyer }
-		svc.addReply(parm
+	svc.addReply(parm
 		, function(result) {
 			if (result.retCode == 'OK') {
 				const html = makeReply(result.retVal);
-				
+
 				let target = document.querySelector('.reply>.content>ul');
-				
-				currPage=1; 
-				showPageList();  
-				showPagingList(); 
-				
+
+				currPage = 1;
+				showPageList();
+				showPagingList();
+
 				target.insertAdjacentHTML('beforeend', html);
 			} else {
 				alert('처리 예외 발생');
@@ -145,6 +148,7 @@ document.querySelector('#addReply').addEventListener('click', function() {
 		}
 		, function(err) { });
 });
+
 //페이징목록의 링크()이벤트 [a,a,a,a,a...a]
 function addLinkEvent() {
 	document.querySelectorAll('div.footer>nav a').forEach(function(item) {

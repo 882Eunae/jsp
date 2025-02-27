@@ -34,15 +34,11 @@ public class DAO {
 		if(stmt !=null) {
 			stmt.close();
 		} 
-		
-		
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
 	//오라클 접속 세션 연결 
 	Connection getConnect() throws SQLException {
 		String url="jdbc:oracle:thin:@localhost:1521:xe"; //오라클 디비 접속정보.
@@ -57,5 +53,4 @@ public class DAO {
 		}
 		 return conn; 
 		}//end of getConnect().
-	
 }

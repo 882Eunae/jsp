@@ -97,7 +97,5 @@ public class FrontController extends HttpServlet {
 		// map 에서 키를 입렧하면 val 반환
 		Control control = map.get(page); // control 객체를 받아옴 boardListControl객체를 받아옴
 		control.exec(req, resp); // 글목록 콘솔에 뜸
-
 	}
-
 }

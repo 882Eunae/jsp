@@ -1,4 +1,4 @@
-package com.yedam.vo;
+package com.yedam.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,9 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class SearchVO {
-	
 	private int page;
 	private String searchCondition;
 	private String keyword;
-
 }
