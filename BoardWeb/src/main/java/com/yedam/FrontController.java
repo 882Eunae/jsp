@@ -18,10 +18,14 @@ import com.yedam.control.AddReplyControl;
 import com.yedam.control.AjaxControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.CalDataControl;
 import com.yedam.control.ChartControl;
 import com.yedam.control.ChartData;
 import com.yedam.control.Control;
 import com.yedam.control.DataControl;
+import com.yedam.control.DataTableControl;
+import com.yedam.control.FullControl;
+import com.yedam.control.InsertControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
@@ -79,8 +83,12 @@ public class FrontController extends HttpServlet {
 		//차트관련
 		map.put("/chart.do", new ChartControl());
 		map.put("/chartData.do", new ChartData());
-		
-		
+		//datatable 관련
+		map.put("/datatable.do",new DataTableControl()); 
+		//full
+		map.put("/full.do", new FullControl());
+		map.put("/calData.do", new CalDataControl()); //달력 데이터 
+		map.put("/insertEvent.do", new InsertControl());
 	}
 
 	@Override

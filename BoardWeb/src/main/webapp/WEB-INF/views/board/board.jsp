@@ -62,24 +62,47 @@ ${"Expression Language" }
 	<div class="header">
 		<input type="text" id="reply" class="col-sm-9">
 		<button id="addReply">댓글등록</button>
+		<button id="button">댓글삭제</button>
+		
 	</div>
 	<!-- 댓글목록 -->
+	<!-- 
 	<div class="content">
 		<ul>
 			<li><span class="col-sm-2">글번호</span> <span class="col-sm-5">글내용</span>
 				<span class="col-sm-2">작성자</span> <span class="col-sm-2">삭제</span></li>
 		</ul>
 	</div>
-
-	<!-- 댓글페이지 -->
+ -->
+	<!-- 댓글페이지
 	<div class="footer">
 		<nav aria-label="Page navigation example">
-			<ul class="pagination pagination-sm justify-content-center">
-				<!-- 페이지 -->
+			<ul class="pagination pagination-sm justify-content-center"> -->
+	<!-- 페이지
 			</ul>
 		</nav>
 	</div>
-
+ -->
+	<!-- 데이터 테이블 -->
+	
+	<table id="example" class="display" style="width: 100%">
+		<thead>
+			<tr>
+				<th>댓글번호</th>
+				<th>댓글내용</th>
+				<th>작성자</th>
+				<th>작성일지</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>댓글번호</th>
+				<th>댓글내용</th>
+				<th>작성자</th>
+				<th>작성일지</th>
+			</tr>
+		</tfoot>
+	</table>
 </div>
 
 <script>
@@ -102,6 +125,11 @@ ${"Expression Language" }
 						location.href = "removeBoard.do?bno=" + bno;
 					});
 </script>
-
+  
 <script src="js/replyService.js"></script>
-<script src="js/reply.js"></script>
+<!-- <script src="js/reply.js"></script> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script src="js/reply_dt.js"></script>
+

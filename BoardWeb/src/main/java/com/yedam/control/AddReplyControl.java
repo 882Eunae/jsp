@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.ibatis.session.SqlSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.yedam.common.DataSource;
 import com.yedam.dao.ReplyDAO;
+import com.yedam.mapper.ReplyMapper;
 import com.yedam.vo.ReplyVO;
 
 public class AddReplyControl implements Control {
@@ -31,10 +35,15 @@ public class AddReplyControl implements Control {
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReply(reply);
 		rvo.setReplyer(replyer);
+		rvo.setReplyDate(new java.util.Date());
 		
 		//DB 반영 
-		ReplyDAO rdao=new ReplyDAO(); 
-		boolean run=rdao.insertReply(rvo); 
+//		ReplyDAO rdao=new ReplyDAO(); 
+//		boolean run=rdao.insertReply(rvo); 
+		
+		SqlSession sqlSession=DataSource.getInstance().openSession();
+		ReplyMapper mapper=sqlSession.getMapper(ReplyMapper.class); 
+		boolean run=mapper.insertReply(rvo) ==1 ; 
 		
 		//결과값 
 		Map<String,Object> result=new HashMap<>(); 
@@ -44,6 +53,7 @@ public class AddReplyControl implements Control {
 //			resp.getWriter().print("{\"retCode\":\"OK\"}");
 			result.put("retCode", "OK"); 
 			result.put("retVal", rvo); 
+			sqlSession.commit(true);
 			
 		} else {
 //			resp.getWriter().print("{\"retCode\":\"NG\"}");
@@ -51,6 +61,7 @@ public class AddReplyControl implements Control {
 		}
 		Gson gson=new GsonBuilder().create();
 		String json=gson.toJson(result);
+		
 		resp.getWriter().print(json);
 	}
 }
