@@ -37,6 +37,9 @@ import com.yedam.control.RemoveMemberControl;
 import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.ReplyCount;
 import com.yedam.control.ReplyListControl;
+import com.yedam.control.TestControl;
+import com.yedam.control.ajaxReplyControl;
+import com.yedam.control.managerControl;
 
 /*
  * MVC에서 control 역할 
@@ -63,7 +66,7 @@ public class FrontController extends HttpServlet {
 		map.put("/removeBoard.do", new RemoveBoardControl());
 
 		map.put("/loginForm.do", new LoginControl()); // 로그인 화면
-		map.put("/login.do", new LoginControl()); // 로그인처리
+		map.put("/login.do", new LoginControl()); // db 데이터 로그인처리
 		map.put("/logout.do", new LogoutControl()); // 로그인처리
 		
 		map.put("/memberList.do", new MemberListControl()); //회원목록. 
@@ -79,7 +82,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addReply.do", new AddReplyControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
 		map.put("/getReplyCnt.do", new ReplyCount());
-		
+		//관리자 댓글관리 페이지 이동 
+		map.put("/manage.do", new managerControl());
+		map.put("/ajaxReply.do", new ajaxReplyControl()); 	//관리자페이지에서 댓글 목록 가져오기 	
 		//차트관련
 		map.put("/chart.do", new ChartControl());
 		map.put("/chartData.do", new ChartData());
@@ -89,6 +94,9 @@ public class FrontController extends HttpServlet {
 		map.put("/full.do", new FullControl());
 		map.put("/calData.do", new CalDataControl()); //달력 데이터 
 		map.put("/insertEvent.do", new InsertControl());
+		
+		map.put("/test.do", new TestControl());
+		
 	}
 
 	@Override
@@ -99,11 +107,14 @@ public class FrontController extends HttpServlet {
 
 		String uri = req.getRequestURI();// /BoardWeb/addStudent.do => uri
 		String context = req.getContextPath(); // "/BoardWeb"
-		String page = uri.substring(context.length());
+		String page = uri.substring(context.length()); 
 
-		System.out.println(page);
+		System.out.println(page); // 글목록 콘솔에 뜸
+	
+		
 		// map 에서 키를 입렧하면 val 반환
 		Control control = map.get(page); // control 객체를 받아옴 boardListControl객체를 받아옴
-		control.exec(req, resp); // 글목록 콘솔에 뜸
+		control.exec(req, resp); 
+		
 	}
 }

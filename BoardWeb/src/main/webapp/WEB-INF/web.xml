@@ -28,14 +28,7 @@
 	</servlet-mapping>
 
 
-	<servlet>
-		<servlet-name>sample</servlet-name>
-		<servlet-class>com.yedam.SampleServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sample</servlet-name>
-		<url-pattern>/sample</url-pattern>
-	</servlet-mapping>
+	
 
 	<welcome-file-list>
 		<!--app실행시 첫페이지 -->

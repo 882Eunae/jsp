@@ -64,3 +64,4 @@
     </body>
 </html>
     
+<script src="js/ajaxreply.js"></script>

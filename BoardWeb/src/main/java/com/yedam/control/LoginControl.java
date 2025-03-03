@@ -7,13 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.yedam.common.DataSource;
 import com.yedam.dao.MemberDAO;
+import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.MemberVO;
 
 public class LoginControl implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+	public void exec(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
 		// 요청방식 (get/post)
 		if (req.getMethod().equals("GET")) {
 			// 1.로그인 화면. jsp파일
@@ -22,11 +28,14 @@ public class LoginControl implements Control {
 		} else if (req.getMethod().equals("POST")) {
 			// 2.로그인기능
 			String id = req.getParameter("uname"); // jsp파일에서 input태그에ㅔ서 받아옴
-			
 			String pw = req.getParameter("psw");		
 			// 로그인체크
-			MemberDAO mdao = new MemberDAO();
-			MemberVO mvo = mdao.login(id, pw);
+			SqlSession sqlSession=DataSource.getInstance().openSession(); 
+			BoardMapper mapper=sqlSession.getMapper(BoardMapper.class); 
+			
+			//MemberDAO mdao = new MemberDAO();
+			MemberVO mvo = mapper.login(id, pw); //맴버객체 반환 
+			
 			if (mvo != null) {
 				System.out.println("환영합니다" + mvo.getMemberName());
 				// 세션 객체에 로그인 아이디를 저장

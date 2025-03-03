@@ -66,6 +66,13 @@
 		                and  tbl_a.rn <= #{page} *5 
 		                ]]>
 	</select>
+	
+	<!-- 관리자페이지 댓글가져오기  -->
+	<select id="ajaxReply" parameterType="String" resultType="reply">
+	select *
+	from tbl_reply 
+	where replyer= #{who}
+	</select>
 
 
 </mapper>

@@ -23,4 +23,6 @@ public interface ReplyMapper {
 	public int insertEvent(@Param("title") String title,
 			@Param("start") String start,
 			@Param("end") String end); 
+	// 관리자 페이지 댓글조회
+	public List<ReplyVO> ajaxReply(String who);
 }

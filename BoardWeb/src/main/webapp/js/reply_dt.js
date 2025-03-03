@@ -2,40 +2,34 @@
  * reply_dt.js
  */
 let table = new DataTable('#example', {
-	ajax: 'datatable.do?bno=' + bno,
+	ajax: 'datatable.do?bno=' + bno, //아닥스객체 반환 
 	lengthMenu: [
 		[5, 10, 25, 50, -1],
 		[5, 10, 25, 50, 'All']
 	]
 });
-
 //화면에서 row 추가.
-let counter= 'hello'; 
+let counter = 'hello';
 function addNewRow() {
 	//원본글 (bno replyer(logid), reply(#reply))
-	let reply=document.querySelector('#reply').value; 
-	let param={bno, reply, replyer: logid};
+	let reply = document.querySelector('#reply').value;
+	let param = { bno, reply, replyer: logid };
 	svc.addReply(param,
-		function(result){
-		let rvo=result.retVal;
-		table.row
-		      .add([
-		          rvo.replyNo,
-		          rvo.reply,
-		          rvo.replyer,
-		          rvo.replyDate,
-		      ])
-		      .draw(false);
-		
-	},function(err){
-		console.log(err);
-	})
-	//화면에 추가 
+		function(result) {
+			let rvo = result.retVal;
+			table.row
+				.add([
+					rvo.replyNo,
+					rvo.reply,
+					rvo.replyer,
+					rvo.replyDate,
+				])
+				.draw(false);
+		}, function(err) {
+			console.log(err);
+		})
 }
 document.querySelector('#addReply').addEventListener('click', addNewRow);
- 
-
-
 
 // tr 선택 /선택해제
 let delNo = 0;
