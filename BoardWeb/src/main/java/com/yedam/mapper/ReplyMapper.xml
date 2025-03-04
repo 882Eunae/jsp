@@ -73,6 +73,15 @@
 	from tbl_reply 
 	where replyer= #{who}
 	</select>
+	
+	<delete id="deleteCalendar"  >
+	delete from tbl_calendar
+	where title=#{title}
+	and start_date= #{start}
+	and end_date= #{end}
+	</delete> 
+	
+	
 
 
 </mapper>

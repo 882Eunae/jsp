@@ -10,19 +10,25 @@ import com.yedam.vo.BoardVO;
 import com.yedam.vo.ReplyVO;
 
 public interface ReplyMapper {
-	
+
 	public int replyCount(int boardNo); //
-	public List<ReplyVO> replyList(@Param("boardNo") int boardNo,@Param("page") int page);
+
+	public List<ReplyVO> replyList(@Param("boardNo") int boardNo, @Param("page") int page);
+
 	public List<ReplyVO> replyListAll(int boardNo);
+
 	public ReplyVO selectReply(int replyNo); //
 
 	public int insertReply(ReplyVO reply); //
+
 	public int deleteReply(int replyNo); //
-	
-	public List<Map<String,Object>> fullData(); //조회
-	public int insertEvent(@Param("title") String title,
-			@Param("start") String start,
-			@Param("end") String end); 
+
+	public List<Map<String, Object>> fullData(); // 조회
+
+	public int insertEvent(@Param("title") String title, @Param("start") String start, @Param("end") String end);
+
+	public int deleteCalendar(@Param("title") String title, @Param("start") String start, @Param("end") String end);
+
 	// 관리자 페이지 댓글조회
 	public List<ReplyVO> ajaxReply(String who);
 }

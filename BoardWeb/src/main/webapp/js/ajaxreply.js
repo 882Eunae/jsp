@@ -25,13 +25,17 @@ function ajaxMakeReply(reply={}){
 	    <small>${reply.boardNo}</small>
 	  </a>
 	 `
+	document.querySelector('#replylist').appendChild(html); 
+	 
 }
 
+console.log(document.querySelector('.button')); 
 
 
-document.querySelector('.searchbutton').addEventListener('click',function(){
+document.querySelector('.button').addEventListener('click',function(){
 	
-	let who=document.querySelector('.inputwho').value; 
+	let who=document.querySelector('.who').value; 
+	console.log('who의값:'+who);
 	fetch(`/ajaxReply.do?who=${who}`)
 		  .then(result => result.json()) //객체로만듦 
 		  .then(function(result){
@@ -46,9 +50,13 @@ document.querySelector('.searchbutton').addEventListener('click',function(){
 		  })
 })
 
+document.querySelector
 
 
-new DataTable('#example', {
+
+
+
+/*new DataTable('#example', {
 		initComplete: function() {
 			    this.api()      //여기서 사용자에 따른 댓글 목록을 찾아옴  원래 this.api
 				.columns()
@@ -71,3 +79,4 @@ new DataTable('#example', {
 		}
 	});
 
+*/

@@ -16,6 +16,7 @@ import com.yedam.control.AddFormControl;
 import com.yedam.control.AddMemberControl;
 import com.yedam.control.AddReplyControl;
 import com.yedam.control.AjaxControl;
+import com.yedam.control.ApiControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.CalDataControl;
@@ -24,6 +25,7 @@ import com.yedam.control.ChartData;
 import com.yedam.control.Control;
 import com.yedam.control.DataControl;
 import com.yedam.control.DataTableControl;
+import com.yedam.control.DeleteCalControl;
 import com.yedam.control.FullControl;
 import com.yedam.control.InsertControl;
 import com.yedam.control.LoginControl;
@@ -40,6 +42,8 @@ import com.yedam.control.ReplyListControl;
 import com.yedam.control.TestControl;
 import com.yedam.control.ajaxReplyControl;
 import com.yedam.control.managerControl;
+import com.yedam.control.mapControl;
+import com.yedam.control.practiceControl;
 
 /*
  * MVC에서 control 역할 
@@ -94,8 +98,16 @@ public class FrontController extends HttpServlet {
 		map.put("/full.do", new FullControl());
 		map.put("/calData.do", new CalDataControl()); //달력 데이터 
 		map.put("/insertEvent.do", new InsertControl());
+		map.put("/deleteCalendar.do", new DeleteCalControl()); 
+		
+		map.put("/api.do", new ApiControl()); 
 		
 		map.put("/test.do", new TestControl());
+		
+		//연습... 
+		map.put("/practice.do", new practiceControl()); 
+		//지도
+		map.put("/map.do", new mapControl()); 
 		
 	}
 

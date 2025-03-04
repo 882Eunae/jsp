@@ -15,31 +15,33 @@ import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.ReplyMapper;
 
-public class InsertControl implements Control {
+public class DeleteCalControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
 		resp.setContentType("text/json;charset=utf-8");
-		
-		String title=req.getParameter("title"); 
-		String start=req.getParameter("start"); 
-		String end=req.getParameter("end"); 
-		
+
+		String title = req.getParameter("title");
+		String end = req.getParameter("end");
+		String start = req.getParameter("start");
+
 		SqlSession sqlSession = DataSource.getInstance().openSession();
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		
-		int run=mapper.insertEvent(title, start, end); 
-		Map<String,Object> result=new HashMap<>(); 
-		
-		if(run>0) {
+
+		int delete = mapper.deleteCalendar(title,start,end);
+		Map<String, String> result = new HashMap<>();
+
+		if (delete > 0) { 
 			result.put("retCode", "OK"); 
-			result.put("retVal", title); 
 			sqlSession.commit(true);
-		}else {
-			result.put("retCode", "NG"); 
+		} else {
+			result.put("retCode", "NG");
 		}
-		Gson gson=new GsonBuilder().create();
-		String json=gson.toJson(result);
+		Gson gson = new GsonBuilder().create();
+		String json = gson.toJson(result);
 		resp.getWriter().print(json);
+
 	}
+
 }

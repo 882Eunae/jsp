@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- api.html -->
+<script>
+ fetch('https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&returnType=JSON&serviceKey=A3x8wqmcNVruYx64bzuPsXWEKlmVEQ0tqxcAlpRlYneaNnw2wDMiV8LoYq2g49Ymgd%2BCufXujIOiBUzwjB0Qbg%3D%3D')
+ .then(result => result.json())
+ .then(result =>{
+	 console.log(result); 
+ })
+ .catch(err=>console.log(err)); 
+</script>
+
+</body>
+</html>

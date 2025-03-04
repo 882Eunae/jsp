@@ -21,6 +21,7 @@ public class ajaxReplyControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		// 누구의 댓글을 가져올건지 데이터 가져오기
+		//ajax
 		resp.setContentType("text/json;charset=utf-8");
 		
 		String who=req.getParameter("who");

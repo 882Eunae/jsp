@@ -13,8 +13,8 @@ tfoot input {
 <h3>testAjax댓글관리 페이지</h3>
 <h4>manage.do</h4>
 
-<button class="searchbutton" >입력후클릭</button>
-	<input class="inputwho" type="text" placeholder="유저명입력">
+<button class="button" >입력후클릭</button>
+	<input class="who" type="text" placeholder="유저명입력">
 
 
 <table id="example" class="display" style="width: 100%">
@@ -28,6 +28,8 @@ tfoot input {
 	</thead>
 	<tbody>
 		<!-- 댓글목록 -->
+		<div id='replylist'></div>
+		
 	</tbody>
 
 </table>
