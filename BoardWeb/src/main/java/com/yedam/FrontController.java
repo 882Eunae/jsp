@@ -41,9 +41,11 @@ import com.yedam.control.ReplyCount;
 import com.yedam.control.ReplyListControl;
 import com.yedam.control.TestControl;
 import com.yedam.control.ajaxReplyControl;
+import com.yedam.control.listreviewControl;
 import com.yedam.control.managerControl;
 import com.yedam.control.mapControl;
 import com.yedam.control.practiceControl;
+import com.yedam.control.reviewBoardControl;
 
 /*
  * MVC에서 control 역할 
@@ -106,6 +108,8 @@ public class FrontController extends HttpServlet {
 		
 		//연습... 
 		map.put("/practice.do", new practiceControl()); 
+		map.put("/listreview.do", new listreviewControl()); 
+		map.put("/reviewBoard.do", new reviewBoardControl()); 
 		//지도
 		map.put("/map.do", new mapControl()); 
 		

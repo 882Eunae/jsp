@@ -44,7 +44,7 @@ public class BoardListControl implements Control {
 		SqlSession sqlSession=DataSource.getInstance().openSession(); 
 		BoardMapper mapper=sqlSession.getMapper(BoardMapper.class); 
 		List<BoardVO> list=mapper.selectBoard(search); 
-		req.setAttribute("list", list);
+		req.setAttribute("list", list); //[{},{},{}] 세션에저장
 
 		// 페이징.
 //		int totalCnt = edao.getTotalCount(search);//실제건수 검색 한 결과에 따라 

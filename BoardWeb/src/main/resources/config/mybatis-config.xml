@@ -10,6 +10,7 @@
 		<typeAlias alias="board" type="com.yedam.vo.BoardVO" />
 		<typeAlias alias="reply" type="com.yedam.vo.ReplyVO" />
 		<typeAlias alias="member" type="com.yedam.vo.MemberVO"/>
+		<typeAlias alias="review" type="com.yedam.vo.ReviewVO"/>
 	</typeAliases>
 
 	<environments default="development">

@@ -81,6 +81,16 @@
 	and end_date= #{end}
 	</delete> 
 	
+	<select id="reviewList" resultType="review" >
+	select *
+	from tbl_review
+	</select>
+	
+	<select id="reviewBoard" parameterType="int" resultType="review">
+	select *
+	from tbl_review
+	where review_no = #{rno}
+	</select>
 	
 
 

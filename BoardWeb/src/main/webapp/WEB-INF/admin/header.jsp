@@ -46,7 +46,7 @@
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="manage.do">댓글관리</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="listreview.do">게시판목록</a>
                                             <a class="nav-link" href="500.html">500 Page</a>
                                         </nav>
                                     </div>

@@ -8,16 +8,19 @@
 </head>
 <body>
 	<h3>요소만들어보기연습 views/member/practice.jsp</h3>
+	<select id="select">
+	<!--여기에 option 태그들어감  -->
+	
+	</select>
 	<table id="eun">
 		<thead>
-			<th>요소1</th>
-			<th>요소2</th>
-			<th>요소3</th>
-			<th>요소4</th>
+			<th>centerName</th>
+			<th>address</th>
+			<th>facilityName</th>
+			<th>sido</th>
 		</thead>
 		
-		<tbody>
-		<tr>tbody</tr>
+		<tbody id="tbody">
 		
 		
 		</tbody>

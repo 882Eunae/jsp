@@ -1,13 +1,13 @@
 /**
  * api.js
  */
+//이벤트 등록 
 
 let centerAll = [];
-//이벤트 등록 
 document.querySelector('#centerlist').addEventListener('change', function(e) {
 	console.log('체인지이벤트...');
 	let sidoName = e.target.value;//도시이름 
-	console.log(sidoName); 
+	console.log(sidoName);
 	let filterSido = [];
 	filterSido = centerAll.reduce((acc, item) => {
 		if (item.sido == sidoName) {
@@ -29,8 +29,8 @@ function makeCenterList(centerAry = []) {
 			console.log('클릭발생');
 			console.log(center);
 			//cosole.log(center.lat,center.lng); 
-			let name=center.sido+center.sigungu+'센터';
-			window.open('map.do?lat=' + center.lat + '&lng=' + center.lng + '&name=' +name);
+			let name = center.sido + center.sigungu + '센터';
+			window.open('map.do?lat=' + center.lat + '&lng=' + center.lng + '&name=' + name);
 		});
 
 		for (let i = 0; i < fields.length; i++) {
@@ -54,19 +54,16 @@ fetch('https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&returnT
 //시도정보 중복제거후 화면 출력 
 function makeSidoList() {
 	let sidoList = [];
-
 	for (let i = 0; i < centerAll.length; i++) {
 		if (sidoList.indexOf(centerAll[i].sido) == -1) {
 			sidoList.push(centerAll[i].sido);
 		}
 	}
 	console.log(sidoList.sort());
-
 	sidoList.forEach(sido => {
 		let option = document.createElement('option');
 		option.innerHTML = sido;
 		document.getElementById('centerlist').appendChild(option);
 	})
-
 };
 

@@ -4,9 +4,6 @@
 
 <!-- html 주석문. -->
 
-
-
-
 <h2>게시글목록</h2>
 <form action="boardList.do">
 	<div class="center">
@@ -43,9 +40,11 @@
 				<td>
 					<c:out value="${board.boardNo }"></c:out>
 				</td>
-				<td><a href="board.do?bno=${board.boardNo }">
+				<td>
+				<a href="board.do?bno=${board.boardNo }">
 						<c:out value="${board.title }"></c:out>
-					</a></td>
+					</a>
+					</td>
 				<td>
 					<c:out value="${board.writer }"></c:out>
 				</td>

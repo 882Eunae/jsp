@@ -18,8 +18,4 @@ public class BoardVO { //tbl_board
 	private int viewCnt;
 	private String img; 
 	
-	
-	
-	
-	
 }

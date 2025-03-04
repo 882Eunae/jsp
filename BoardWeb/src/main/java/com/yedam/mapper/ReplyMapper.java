@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.yedam.common.SearchVO;
 import com.yedam.vo.BoardVO;
 import com.yedam.vo.ReplyVO;
+import com.yedam.vo.ReviewVO;
 
 public interface ReplyMapper {
 
@@ -31,4 +32,10 @@ public interface ReplyMapper {
 
 	// 관리자 페이지 댓글조회
 	public List<ReplyVO> ajaxReply(String who);
+	//테스트 연습중... 게시판 글 목록 
+	public List<ReviewVO> reviewList(); 
+	public ReviewVO reviewBoard(int rno); 
+	
+	
+	
 }
